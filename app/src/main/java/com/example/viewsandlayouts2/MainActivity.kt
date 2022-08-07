@@ -12,9 +12,8 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<NavigationView>(R.id.navigation_view).setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.menu_item_view_pager -> {
-                    startActivity(Intent(this, ViewPagerActivity::class.java))
-                }
+                R.id.menu_item_view_pager -> startActivity(Intent(this, ViewPagerActivity::class.java))
+                R.id.menu_item_wed_view -> startActivity(Intent(this, WebViewActivity::class.java))
                 else -> throw IllegalArgumentException("NavigationView item is not implemented")
             }
             true
