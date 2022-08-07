@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.menu_item_view_pager -> startActivity(Intent(this, ViewPagerActivity::class.java))
                 R.id.menu_item_wed_view -> startActivity(Intent(this, WebViewActivity::class.java))
+                R.id.menu_item_recycler_view -> startActivity(Intent(this, RecyclerViewActivity::class.java))
                 else -> throw IllegalArgumentException("NavigationView item is not implemented")
             }
             true
