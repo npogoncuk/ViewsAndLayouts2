@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
@@ -36,8 +37,12 @@ class Fragment3 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.fragment_text_view).text = name ?: throw IllegalArgumentException("Name of fragment is null")
-        view.findViewById<ImageView>(R.id.fragment_imageView).setImageResource(imageId ?: throw IllegalArgumentException("imageId is null"))
+        view.findViewById<TextView>(R.id.fragment_text_view).text =
+            name ?: throw IllegalArgumentException("Name of fragment is null")
+        view.findViewById<ImageView>(R.id.fragment_imageView)
+            .setImageResource(imageId ?: throw IllegalArgumentException("imageId is null"))
+        view.findViewById<Button>(R.id.open_fragment_button).setOnClickListener {
+            (requireActivity() as? OnOpenAnotherFragmentClicked)?.onButtonClicked() ?: throw IllegalArgumentException("Activity is not implementing interface") }
     }
 
     companion object {
@@ -49,5 +54,9 @@ class Fragment3 : Fragment() {
                     putInt(ARG_IMAGE, imageId)
                 }
             }
+    }
+
+    interface OnOpenAnotherFragmentClicked {
+        fun onButtonClicked()
     }
 }
